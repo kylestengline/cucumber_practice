@@ -3,10 +3,13 @@ Given(/^the input "([^"]*)"$/) do |input|
 end
 
 When(/^the calculator is run$/) do
-  @output = 'ruby calc.rb #{@input}'
-# raise('Command failed!')#unless $?.success?
+# success method was failing because we need back ticks ( ` ) instead of quotes
+# for what output = 
+# refer to this: http://stackoverflow.com/questions/11916518/newbie-cucumber-hang-up-success-no-method-error
+  @output = `ruby calc.rb #{@input}`
+  raise('Command failed!') unless $?.success?
 end
 
-Then(/^the output should be "([^"]*)"$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^the output should be "([^"]*)"$/) do |expected_output|
+  @output.should == expected_output
 end
