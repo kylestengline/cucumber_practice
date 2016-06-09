@@ -1,5 +1,6 @@
 Feature: Adding
 
+@adding
 Scenario Outline: Add two numbers
   Given the input "<input>"
   When the calculator is run
