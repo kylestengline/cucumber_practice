@@ -1,5 +1,6 @@
-Given(/^I am in a good mood$/) do
+Given(/^I am in a "([^"]*)" mood$/) do |arg1|
   @robot = @happy
+  @robot_mad = @mad
 end
 
 When(/^you tickle me$/) do
